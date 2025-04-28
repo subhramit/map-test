@@ -32,7 +32,7 @@ public class MapPerformanceTest {
     }
 
     public static void main(String[] args) {
-        final int SIZE = 70000000;
+        final int SIZE = 10000000;
         Command[] commands = new Command[SIZE];
 
         for (int i = 0; i < SIZE; i++) {
@@ -103,7 +103,7 @@ public class MapPerformanceTest {
         long start = System.currentTimeMillis();
 
         long count = java.util.Arrays.stream(commands)
-                                     .filter(command -> command instanceof AppendToCurrentLibrary)
+                                     .filter(AppendToCurrentLibrary.class::isInstance)
                                      .map(command -> ((AppendToCurrentLibrary) command).toAppend())
                                      .filter(java.util.Objects::nonNull)
                                      .count();
