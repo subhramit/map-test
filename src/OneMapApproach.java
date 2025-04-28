@@ -31,7 +31,7 @@ public class OneMapApproach {
 
     public static String processCommand(Command command) {
         return java.util.stream.Stream.of(command)
-                                      .filter(cmd -> cmd instanceof AppendToCurrentLibrary)
+                                      .filter(AppendToCurrentLibrary.class::isInstance)
                                       .map(cmd -> ((AppendToCurrentLibrary) cmd).toAppend())
                                       .filter(java.util.Objects::nonNull)
                                       .findAny()
