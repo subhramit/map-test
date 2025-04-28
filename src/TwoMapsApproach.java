@@ -1,3 +1,5 @@
+import java.util.stream.Stream;
+
 public class TwoMapsApproach {
     // Base command interface
     interface Command {
@@ -30,12 +32,12 @@ public class TwoMapsApproach {
     }
 
     public static String processCommand(Command command) {
-        return java.util.stream.Stream.of(command)
-                                      .filter(AppendToCurrentLibrary.class::isInstance)
-                                      .map(AppendToCurrentLibrary.class::cast)
-                                      .map(AppendToCurrentLibrary::toAppend)
-                                      .filter(java.util.Objects::nonNull)
-                                      .findAny()
-                                      .orElse(null);
+        return Stream.of(command)
+                     .filter(AppendToCurrentLibrary.class::isInstance)
+                     .map(AppendToCurrentLibrary.class::cast)
+                     .map(AppendToCurrentLibrary::toAppend)
+                     .filter(java.util.Objects::nonNull)
+                     .findAny()
+                     .orElse(null);
     }
 }

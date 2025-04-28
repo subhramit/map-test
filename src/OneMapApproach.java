@@ -1,3 +1,5 @@
+import java.util.stream.Stream;
+
 public class OneMapApproach {
     // Base command interface
     interface Command {
@@ -30,11 +32,11 @@ public class OneMapApproach {
     }
 
     public static String processCommand(Command command) {
-        return java.util.stream.Stream.of(command)
-                                      .filter(AppendToCurrentLibrary.class::isInstance)
-                                      .map(cmd -> ((AppendToCurrentLibrary) cmd).toAppend())
-                                      .filter(java.util.Objects::nonNull)
-                                      .findAny()
-                                      .orElse(null);
+        return Stream.of(command)
+                     .filter(AppendToCurrentLibrary.class::isInstance)
+                     .map(cmd -> ((AppendToCurrentLibrary) cmd).toAppend())
+                     .filter(java.util.Objects::nonNull)
+                     .findAny()
+                     .orElse(null);
     }
 }

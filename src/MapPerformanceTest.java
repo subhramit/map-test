@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class MapPerformanceTest {
     static class AppendCommand {
         private final String value;
@@ -88,12 +90,12 @@ public class MapPerformanceTest {
     private static long twoMapOperations(Command[] commands) {
         long start = System.currentTimeMillis();
 
-        long count = java.util.Arrays.stream(commands)
-                                     .filter(AppendToCurrentLibrary.class::isInstance)
-                                     .map(AppendToCurrentLibrary.class::cast)
-                                     .map(AppendToCurrentLibrary::toAppend)
-                                     .filter(java.util.Objects::nonNull)
-                                     .count();
+        long count = Arrays.stream(commands)
+                           .filter(AppendToCurrentLibrary.class::isInstance)
+                           .map(AppendToCurrentLibrary.class::cast)
+                           .map(AppendToCurrentLibrary::toAppend)
+                           .filter(java.util.Objects::nonNull)
+                           .count();
 
         long end = System.currentTimeMillis();
         return end - start;
@@ -102,11 +104,11 @@ public class MapPerformanceTest {
     private static long oneMapOperation(Command[] commands) {
         long start = System.currentTimeMillis();
 
-        long count = java.util.Arrays.stream(commands)
-                                     .filter(AppendToCurrentLibrary.class::isInstance)
-                                     .map(command -> ((AppendToCurrentLibrary) command).toAppend())
-                                     .filter(java.util.Objects::nonNull)
-                                     .count();
+        long count = Arrays.stream(commands)
+                           .filter(AppendToCurrentLibrary.class::isInstance)
+                           .map(command -> ((AppendToCurrentLibrary) command).toAppend())
+                           .filter(java.util.Objects::nonNull)
+                           .count();
 
         long end = System.currentTimeMillis();
         return end - start;
