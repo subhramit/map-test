@@ -32,7 +32,7 @@ public class MapPerformanceTest {
     }
 
     public static void main(String[] args) {
-        final int SIZE = 10000000;
+        final int SIZE = 40000000;
         Command[] commands = new Command[SIZE];
 
         for (int i = 0; i < SIZE; i++) {

@@ -103,3 +103,21 @@ One map is 25.88% faster than two maps
 Verifying results are identical...
 Results match: true
 Found 12500000 non-null values
+
+************************************************************************************************************
+PS D:\git-repositories\map-test> java D:\git-repositories\map-test\src\MapPerformanceTest.java
+Starting performance test with 40000000 elements
+Warming up JVM...
+
+Running actual tests...
+
+Results averaged over 10 runs:
+Two map operations: 803ms
+One map operation : 625ms
+Difference       : 178ms
+One map is 22.19% faster than two maps
+
+Verifying results are identical...
+Results match: true
+Found 10000000 non-null values
+
